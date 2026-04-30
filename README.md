@@ -247,15 +247,11 @@ Os testes validam os principais comportamentos da API, incluindo:
 
 A Inteligência Artificial Generativa foi utilizada como apoio em diferentes etapas do projeto:
 
-- definição do escopo do MVP;
 - sugestão da arquitetura mínima;
-- escolha das tecnologias;
 - criação da estrutura de pastas;
 - apoio na implementação dos módulos da API;
 - geração de exemplos de testes automatizados;
 - revisão da documentação;
-- sugestão de mensagens de commit seguindo Conventional Commits;
-- estruturação do README e da documentação técnica.
 
 A IA atuou como uma ferramenta de apoio ao desenvolvimento, enquanto as decisões de escopo, validação, execução e organização foram conduzidas pelo desenvolvedor.
 
