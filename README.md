@@ -45,6 +45,7 @@ A API permite:
 - HTTPX
 - Git
 - GitHub
+- Makefile
 
 ---
 
@@ -66,9 +67,16 @@ micro-api-tarefas-jn/
 |   `-- test_tarefas.py
 |
 |-- docs/
-|   `-- arquitetura.md
+|   |-- arquitetura.md
+|   `-- evidencias/
+|       |-- swagger-home.png
+|       |-- criar-tarefa-201.png
+|       |-- listar-tarefas.png
+|       `-- testes-pytest.png
 |
 |-- .gitignore
+|-- LICENSE
+|-- Makefile
 |-- requirements.txt
 `-- README.md
 ```
@@ -115,7 +123,7 @@ flowchart TD
 ### 8.1 Clonar o repositório
 
 ```bash
-git clone https://github.com/joaonicholasfigueiredo/micro-api-tarefas-jn
+git clone https://github.com/joaonicholasfigueiredo/micro-api-tarefas-jn.git
 cd micro-api-tarefas-jn
 ```
 
@@ -159,23 +167,90 @@ A documentação interativa da API estará disponível em:
 
 - `http://127.0.0.1:8000/docs`
 
----
-
-## 9. Endpoints da API
-
-| Método | Rota                       | Descrição                          |
-| ------ | -------------------------- | ---------------------------------- |
-| GET    | `/`                          | Verifica se a API está funcionando |
-| POST   | `/tarefas/`                  | Cria uma nova tarefa               |
-| GET    | `/tarefas/`                  | Lista todas as tarefas             |
-| GET    | `/tarefas/{tarefa_id}`       | Busca uma tarefa por ID            |
-| PUT    | `/tarefas/{tarefa_id}`       | Atualiza uma tarefa                |
-| PATCH  | `/tarefas/{tarefa_id}/concluir` | Marca uma tarefa como concluída |
-| DELETE | `/tarefas/{tarefa_id}`       | Exclui uma tarefa                  |
 
 ---
 
-## 10. Exemplo de Criação de Tarefa
+## Evidências de Funcionamento
+
+As imagens abaixo demonstram o funcionamento da API, a documentação interativa gerada pelo FastAPI e a validação dos testes automatizados.
+
+### Swagger com os endpoints disponíveis
+
+![Swagger com os endpoints da API](docs/evidencias/swagger-home.png)
+
+### Criação de tarefa via Swagger
+
+![Criação de tarefa com resposta 201](docs/evidencias/criar-tarefa-201.png)
+
+### Listagem de tarefas com filtro
+
+![Listagem de tarefas com resposta 200](docs/evidencias/listar-tarefas.png)
+
+### Testes automatizados passando
+
+![Testes automatizados passando](docs/evidencias/testes-pytest.png)
+
+---
+
+## 9. Comandos com Makefile
+
+O projeto inclui um `Makefile` para centralizar comandos comuns de instalação, teste e execução.
+
+### 9.1 Instalar dependências
+
+```bash
+make install
+```
+
+Comando equivalente:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+### 9.2 Executar testes
+
+```bash
+make test
+```
+
+Comando equivalente:
+
+```bash
+python -m pytest -v
+```
+
+### 9.3 Rodar a aplicação
+
+```bash
+make run
+```
+
+Comando equivalente:
+
+```bash
+python -m uvicorn app.main:app --reload
+```
+
+> Caso o comando `make` não esteja disponível no Windows, os comandos equivalentes podem ser executados manualmente conforme descrito acima.
+
+---
+
+## 10. Endpoints da API
+
+| Método | Rota | Descrição |
+| ------ | ---- | --------- |
+| GET | `/` | Verifica se a API está funcionando |
+| POST | `/tarefas/` | Cria uma nova tarefa |
+| GET | `/tarefas/` | Lista todas as tarefas |
+| GET | `/tarefas/{tarefa_id}` | Busca uma tarefa por ID |
+| PUT | `/tarefas/{tarefa_id}` | Atualiza uma tarefa |
+| PATCH | `/tarefas/{tarefa_id}/concluir` | Marca uma tarefa como concluída |
+| DELETE | `/tarefas/{tarefa_id}` | Exclui uma tarefa |
+
+---
+
+## 11. Exemplo de Criação de Tarefa
 
 Requisição:
 
@@ -205,7 +280,7 @@ Resposta esperada:
 
 ---
 
-## 11. Status e Prioridades Permitidas
+## 12. Status e Prioridades Permitidas
 
 Status:
 
@@ -222,12 +297,18 @@ Prioridade:
 
 ---
 
-## 12. Como Executar os Testes
+## 13. Como Executar os Testes
 
 Para executar os testes automatizados, utilize:
 
 ```bash
 pytest -v
+```
+
+Também é possível executar os testes por meio do Makefile:
+
+```bash
+make test
 ```
 
 Os testes validam os principais comportamentos da API, incluindo:
@@ -243,7 +324,7 @@ Os testes validam os principais comportamentos da API, incluindo:
 
 ---
 
-## 13. Uso da Inteligência Artificial no Desenvolvimento
+## 14. Uso da Inteligência Artificial no Desenvolvimento
 
 A Inteligência Artificial Generativa foi utilizada como apoio em diferentes etapas do projeto:
 
@@ -257,7 +338,7 @@ A IA atuou como uma ferramenta de apoio ao desenvolvimento, enquanto as decisõe
 
 ---
 
-## 14. Versionamento
+## 15. Versionamento
 
 O projeto utiliza Git para controle de versão.
 
@@ -272,11 +353,14 @@ feat(api): adiciona endpoints CRUD de tarefas
 test(tasks): adiciona testes automatizados da API
 docs(architecture): documenta arquitetura da micro-api
 docs(readme): corrige formatacao da documentacao principal
+docs(project): atualiza documentacao do projeto
+chore(project): adiciona licenca e makefile
+docs(evidencias): adiciona capturas de funcionamento da API
 ```
 
 ---
 
-## 15. Limitações e Próximos Passos
+## 16. Limitações e Próximos Passos
 
 Por se tratar de um MVP acadêmico, algumas funcionalidades não foram implementadas nesta versão inicial.
 
@@ -293,12 +377,14 @@ Possíveis melhorias futuras:
 
 ---
 
-## 16. Autor
+## 17. Autor
 
 Projeto desenvolvido por João Nicholas como parte de uma atividade acadêmica sobre desenvolvimento de software assistido por Inteligência Artificial Generativa.
 
 ---
 
-## 17. Licença
+## 18. Licença
 
-Este projeto é destinado para fins acadêmicos.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` na raiz do repositório para mais detalhes.
+
+O projeto foi desenvolvido para fins acadêmicos.
